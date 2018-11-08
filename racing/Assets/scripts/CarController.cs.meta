@@ -1,0 +1,25 @@
+fileFormatVersion: 2
+guid: 7f3c4175d955eea4aa30556eb1ec8b6c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - waypointContainer: {instanceID: 0}
+  - wheelFL: {instanceID: 0}
+  - wheelFR: {instanceID: 0}
+  - wheelBL: {instanceID: 0}
+  - wheelBR: {instanceID: 0}
+  - wheelTransformFL: {instanceID: 0}
+  - wheelTransformFR: {instanceID: 0}
+  - wheelTransformBL: {instanceID: 0}
+  - wheelTransformBR: {instanceID: 0}
+  - leftBrakeLight: {instanceID: 0}
+  - rightBrakeLight: {instanceID: 0}
+  - idleLightTex: {instanceID: 0}
+  - brakeLightTex: {fileID: 2800000, guid: 98bdba121b3f0614cb3d2075e41ac39d, type: 3}
+  - reverseLightTex: {instanceID: 0}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

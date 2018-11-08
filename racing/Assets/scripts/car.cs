@@ -1,9 +1,14 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class car : MonoBehaviour {
 
+public float handBrakeForwardSlip = 0.04f;
+public float handBrakeSidewaysSlip = 0.08f;
+public float maxBrakeTorque = 100;
+private bool applyHandBrake = false;
 public float topSpeed = 150;
 private float currentSpeed;
 public float decelerationTorque = 30;
@@ -46,13 +51,13 @@ private Rigidbody body;
 currentSpeed = wheelBL.radius*wheelBL.rpm*Mathf.PI*0.12f;
     if(currentSpeed < topSpeed)
     {
-      //rear wheel drive.
+     
       wheelBL.motorTorque = Input.GetAxis("Vertical") * maxTorque;
       wheelBR.motorTorque = Input.GetAxis("Vertical") * maxTorque;
     }
     else
     {
-      //can't go faster, already at top speed that engine produces.
+     
       wheelBL.motorTorque = 0;
       wheelBR.motorTorque = 0;
     }
@@ -66,11 +71,11 @@ currentSpeed = wheelBL.radius*wheelBL.rpm*Mathf.PI*0.12f;
 
 		wheelBL.motorTorque = Input.GetAxis("Vertical") * maxTorque;
 		wheelBR.motorTorque = Input.GetAxis("Vertical") * maxTorque;
-		if(Input.GetAxis("Vertical") <= -0.5f && localVelocity.z > 0){
+		if(!applyHandBrake && ((Input.GetAxis("Vertical") <= -0.5f && localVelocity.z > 0) || (Input.GetAxis("Vertical") >= 0.5f && localVelocity.z < 0) )){
 			wheelBL.brakeTorque = decelerationTorque + maxTorque;
 			wheelBR.brakeTorque = decelerationTorque + maxTorque;
 		}
-		else if (Input.GetAxis("Vertical") == 0) {
+		else if (!applyHandBrake && Input.GetAxis("Vertical") == 0) {
 			wheelBL.brakeTorque = decelerationTorque;
 			wheelBR.brakeTorque = decelerationTorque;
 		}
@@ -78,9 +83,47 @@ currentSpeed = wheelBL.radius*wheelBL.rpm*Mathf.PI*0.12f;
 			wheelBL.brakeTorque = 0;
 			wheelBR.brakeTorque = 0;
 		}
+
+		if (Input.GetButton("Jump")){
+			applyHandBrake = true;
+			wheelFL.brakeTorque = maxBrakeTorque;
+			wheelFR.brakeTorque = maxBrakeTorque;
+if (GetComponent<Rigidbody>().velocity.magnitude > 1){
+	SetSlipValues(handBrakeForwardSlip, handBrakeSidewaysSlip);
+}
+else {
+	SetSlipValues(1f,1f);
+}
+
+		}
+		else {
+			applyHandBrake = false;
+			wheelFL.brakeTorque = 0;
+			wheelFR.brakeTorque = 0;
+			SetSlipValues(1f,1f);
+		}
 	}
 
-	void UpdateWheelPositions(){
+    private void SetSlipValues(float forward, float sideways)
+    {
+      WheelFrictionCurve tempStruct = wheelBR.forwardFriction;
+	  tempStruct.stiffness = forward;
+	  wheelBR.forwardFriction = tempStruct;
+
+	  tempStruct = wheelBR.sidewaysFriction;
+	  tempStruct.stiffness = sideways;
+	  wheelBR.sidewaysFriction = tempStruct;
+
+	  tempStruct = wheelBL.sidewaysFriction;
+	  tempStruct.stiffness = sideways;
+	  wheelBL.sidewaysFriction = tempStruct;
+
+	  tempStruct = wheelBL.forwardFriction;
+	  tempStruct.stiffness = forward;
+	  wheelBL.forwardFriction = tempStruct;
+    }
+
+    void UpdateWheelPositions(){
 		WheelHit contact = new WheelHit();
 
 		if (wheelFL.GetGroundHit(out contact))
