@@ -76,9 +76,10 @@ public class CarController : MonoBehaviour
 	// FixedUpdate is called once per physics frame
 	void FixedUpdate () 
 	{
-		//calculate turn angle
 		Vector3 RelativeWaypointPosition = transform.InverseTransformPoint(new Vector3( waypoints[currentWaypoint].position.x, transform.position.y, waypoints[currentWaypoint].position.z ) );
 		inputSteer = RelativeWaypointPosition.x / RelativeWaypointPosition.magnitude;
+		
+		if(Time.time >= 3){//calculate turn angle
 		
 		//Spoilers add down pressure based on the car�s speed. (Upside-down lift)
 		Vector3 localVelocity = transform.InverseTransformDirection(body.velocity);
@@ -112,6 +113,8 @@ public class CarController : MonoBehaviour
 				inputTorque = 0;
 			}
 		}
+	
+		}
 
 		
 		//set slip values
@@ -132,6 +135,7 @@ public class CarController : MonoBehaviour
 			if ( currentWaypoint >= waypoints.Length ) 
 			{
  				currentWaypoint = 0;
+				 RaceManager.Instance.LapFinishedByAi(this);
  			}
 		}
 		
@@ -209,6 +213,7 @@ public class CarController : MonoBehaviour
 		
 		//adjust engine sound
 		EngineSound();
+		
 	}
 	
 	void DetermineBreakLightState()

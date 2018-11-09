@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class car : MonoBehaviour {
 
+public bool objective1 = false;
+public bool objective2 = false;
 public float handBrakeForwardSlip = 0.04f;
 public float handBrakeSidewaysSlip = 0.08f;
 public float maxBrakeTorque = 100;
@@ -46,9 +48,11 @@ private Rigidbody body;
 
 		
 	}
-
+	
 	void FixedUpdate () {
-currentSpeed = wheelBL.radius*wheelBL.rpm*Mathf.PI*0.12f;
+	if(Time.time >= 3){
+	
+	currentSpeed = wheelBL.radius*wheelBL.rpm*Mathf.PI*0.12f;
     if(currentSpeed < topSpeed)
     {
      
@@ -103,7 +107,7 @@ else {
 			SetSlipValues(1f,1f);
 		}
 	}
-
+	}
     private void SetSlipValues(float forward, float sideways)
     {
       WheelFrictionCurve tempStruct = wheelBR.forwardFriction;
@@ -156,4 +160,10 @@ else {
     }
 
 	}
+
+	void Objective1(){
+		objective1 = true;
+		return ;
+	}
+	
 }
