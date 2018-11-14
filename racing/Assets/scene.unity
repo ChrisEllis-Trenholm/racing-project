@@ -512,8 +512,8 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 4.6
   m_SuspensionSpring:
-    spring: 35000
-    damper: 4500
+    spring: 3500
+    damper: 450
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
@@ -813,25 +813,13 @@ GameObject:
   - component: {fileID: 222552767}
   - component: {fileID: 222552766}
   - component: {fileID: 222552765}
-  - component: {fileID: 222552764}
   m_Layer: 0
   m_Name: objective 2
-  m_TagString: Untagged
+  m_TagString: Objective2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &222552764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 222552763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b5a986130e17ca441b4ad7ce12317e13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &222552765
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -858,7 +846,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 222552763}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 364.44, y: 3.16, z: 257.19}
+  m_LocalPosition: {x: 101.28, y: 3.16, z: 274.2}
   m_LocalScale: {x: 26.965, y: 7.4549, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -941,9 +929,10 @@ GameObject:
   - component: {fileID: 262860238}
   - component: {fileID: 262860237}
   - component: {fileID: 262860236}
+  - component: {fileID: 262860239}
   m_Layer: 0
   m_Name: roof
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1003,7 +992,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 262860234}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1015,6 +1004,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 262860234}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &262860239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 262860234}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82850a91758d49440a983877580a1cc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objective1: 0
+  objective2: 0
 --- !u!1 &290810555
 GameObject:
   m_ObjectHideFlags: 0
@@ -1282,7 +1284,7 @@ MonoBehaviour:
   maxReverseSpeed: -50
   maxBrakeTorque: 1000
   maxTurnAngle: 45
-  maxTorque: 1000
+  maxTorque: 500
   decelerationTorque: 30
   centerOfMassAdjustment: {x: 0, y: -0.9, z: 0}
   spoilerRatio: 0.1
@@ -1372,7 +1374,7 @@ MonoBehaviour:
   maxReverseSpeed: -50
   maxBrakeTorque: 1000
   maxTurnAngle: 45
-  maxTorque: 1000
+  maxTorque: 500
   decelerationTorque: 30
   centerOfMassAdjustment: {x: 0, y: -0.9, z: 0}
   spoilerRatio: 0.1
@@ -2449,25 +2451,13 @@ GameObject:
   - component: {fileID: 1192125818}
   - component: {fileID: 1192125817}
   - component: {fileID: 1192125816}
-  - component: {fileID: 1192125815}
   m_Layer: 0
   m_Name: objective 1
-  m_TagString: Untagged
+  m_TagString: Objective1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1192125815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1192125814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd5b078cba78d694dbcbb444dbcfd36d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1192125816
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2774,8 +2764,8 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 4.6
   m_SuspensionSpring:
-    spring: 35000
-    damper: 4500
+    spring: 3500
+    damper: 450
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
@@ -2832,8 +2822,8 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 4.6
   m_SuspensionSpring:
-    spring: 35000
-    damper: 4500
+    spring: 3500
+    damper: 450
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
@@ -2964,7 +2954,7 @@ GameObject:
   - component: {fileID: 1362717663}
   m_Layer: 0
   m_Name: lap
-  m_TagString: Untagged
+  m_TagString: Lap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3928,7 +3918,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1939379502}
   m_LocalRotation: {x: -0, y: 0.94139904, z: -0, w: 0.337295}
-  m_LocalPosition: {x: 345.9, y: 1.87, z: 299.7}
+  m_LocalPosition: {x: 219.1, y: 1.87, z: 295.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 584201871}
@@ -3964,24 +3954,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d10aae031e3b4e64da3620fc366de749, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objective1: 0
-  objective2: 0
+  speedometer: {fileID: 2800000, guid: 3bf667af343b1994b8ae58001a1ec6d6, type: 3}
+  needle: {fileID: 2800000, guid: 1712686a45a1f414dbb9fc393c0af756, type: 3}
   handBrakeForwardSlip: 0.04
   handBrakeSidewaysSlip: 0.08
-  maxBrakeTorque: 1000
-  topSpeed: 150
-  decelerationTorque: 30
+  maxBrakeTorque: 100
+  topSpeed: 400
+  decelerationTorque: 200
   WheelTransformFL: {fileID: 42425009}
   WheelTransformFR: {fileID: 804019928}
   WheelTransformBR: {fileID: 409640930}
   WheelTransformBL: {fileID: 1482060792}
-  maxTurnAngle: 45
-  maxTorque: 1000
+  maxTurnAngle: 25
+  maxTorque: 500
   wheelFL: {fileID: 116780424}
   wheelBL: {fileID: 1260521685}
   wheelFR: {fileID: 1244458800}
   wheelBR: {fileID: 2099594919}
-  spoilerRatio: 0.3
+  spoilerRatio: 0.1
   centerOfMassAdjustment: {x: 0, y: -0.9, z: 0}
 --- !u!1 &2003280063
 GameObject:
@@ -4425,8 +4415,8 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 4.6
   m_SuspensionSpring:
-    spring: 35000
-    damper: 4500
+    spring: 3500
+    damper: 450
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0

@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class car : MonoBehaviour {
+public Texture2D speedometer;
+public Texture2D needle;
 
-public bool objective1 = false;
-public bool objective2 = false;
 public float handBrakeForwardSlip = 0.04f;
 public float handBrakeSidewaysSlip = 0.08f;
 public float maxBrakeTorque = 100;
@@ -161,9 +161,12 @@ else {
 
 	}
 
-	void Objective1(){
-		objective1 = true;
-		return ;
+	void OnGUI(){
+		GUI.DrawTexture(new Rect(Screen.width-300,Screen.height-150,300,150),speedometer);
+		float speedFactor=currentSpeed/topSpeed;
+		float rotationAngle = Mathf.Lerp(0,180,Mathf.Abs(speedFactor));
+		GUIUtility.RotateAroundPivot(rotationAngle,new Vector2(Screen.width-150,Screen.height));
+		GUI.DrawTexture(new Rect(Screen.width - 300, Screen.height - 150, 300 , 300),needle);
 	}
 	
 }
